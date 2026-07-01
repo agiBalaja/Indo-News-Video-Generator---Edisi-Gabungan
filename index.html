@@ -444,7 +444,7 @@ Piala Dunia 2026 dengan 6 Gol</textarea>
               ctx.fillText("“", currentX - (size * 0.55), yPos + (size * 0.85));
             }
 
-            currentYOffset += size + (paddingY * 2) + 14;
+            currentYOffset += size + (paddingY * 2) + 7;
 
           } else if (activeTemplate === "4") {
             // Gaya 4: Breaking News Modern (Menggunakan Kotak Gelap Beraksen Merah)
@@ -464,7 +464,7 @@ Piala Dunia 2026 dengan 6 Gol</textarea>
             ctx.fillStyle = '#ffffff'; // Teks berwarna putih kontras
             ctx.fillText(line, currentX + paddingX, yPos + size + (paddingY / 2));
 
-            currentYOffset += size + (paddingY * 2) + 12;
+            currentYOffset += size + (paddingY * 2) + 7;
 
           } else if (activeTemplate === "8") {
             // Gaya 8: Minimalis Elegan (Teks Transparan dengan Garis Batas Vertikal Tebal di Samping Kiri)
@@ -479,7 +479,7 @@ Piala Dunia 2026 dengan 6 Gol</textarea>
             ctx.shadowOffsetY = 3;
 
             ctx.fillText(line, currentX + 22, yPos + size - 2);
-            currentYOffset += size + paddingY + 14;
+            currentYOffset += size + paddingsec + 7;
           }
 
           ctx.restore();
