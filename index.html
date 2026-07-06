@@ -430,7 +430,7 @@ Piala Dunia 2026 dengan 6 Gol</textarea>
         if (!isRecording) {
           elapsedTime = performance.now() - startTime;
           // Loop preview timeline biasa jika lewat 5 detik
-          if (elapsedTime > 5000) {
+          if (elapsedTime > 8000) {
             startTime = performance.now();
           }
         } else {
@@ -610,7 +610,7 @@ Piala Dunia 2026 dengan 6 Gol</textarea>
       mediaRecorder.start();
       setTimeout(() => {
         mediaRecorder.stop();
-      }, 5000);
+      }, 10000);
     });
   </script>
 
