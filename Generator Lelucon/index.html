@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Generator Lelucon Bahasa Indonesia | Random Joke</title>
+    <!-- Tambahkan tombol kembali -->
+    <script src="../tombol-kembali.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV25BYV3TL"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV25BYV3TL');
+  </script> 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2b2d 0%, #1a4a4f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, -apple-system, sans-serif;
+      padding: 1.5rem;
+      margin: 0;
+    }
+
+    /* Kartu utama dengan nuansa Indonesia */
+    .joke-card {
+      max-width: 750px;
+      width: 100%;
+      background: #fffef7;
+      border-radius: 2rem;
+      box-shadow: 0 30px 45px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      animation: layarMasuk 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    @keyframes layarMasuk {
+      0% {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Header bernuansa merah putih */
+    .joke-header {
+      background: linear-gradient(98deg, #e53935, #c62828);
+      padding: 1.3rem 1.8rem;
+      text-align: center;
+      border-bottom: 4px solid #ffcd6b;
+    }
+
+    .joke-header h1 {
+      font-size: 1.9rem;
+      letter-spacing: -0.3px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-weight: 800;
+      text-shadow: 2px 2px 0 #9b2c1d;
+    }
+
+    .joke-header h1 span {
+      font-size: 2rem;
+    }
+
+    .sub {
+      color: #ffecb3;
+      font-weight: 600;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      background: rgba(0,0,0,0.2);
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      backdrop-filter: blur(2px);
+    }
+
+    /* konten isi joke */
+    .joke-content {
+      padding: 2rem 2rem 1.8rem 2rem;
+    }
+
+    /* area lelucon utama */
+    .joke-indo-area {
+      background: #fef7e0;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+      border-left: 8px solid #f9a825;
+      transition: all 0.2s;
+    }
+
+    .joke-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #b85c1a;
+      background: #ffefcf;
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+
+    .joke-text {
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #2c2b26;
+      word-break: break-word;
+    }
+
+    /* tambahan metadata / sumber */
+    .joke-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+      margin-bottom: 1.8rem;
+      border-top: 1px solid #f2e0c5;
+      padding-top: 1rem;
+      font-size: 0.75rem;
+      color: #7e6242;
+    }
+
+    .source-badge {
+      background: #e9ddd0;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .emoji-indo {
+      font-size: 1rem;
+    }
+
+    /* tombol utama auto generate */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .generate-btn {
+      background: #f57c00;
+      border: none;
+      color: white;
+      font-weight: 800;
+      font-size: 1.12rem;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      font-family: inherit;
+      letter-spacing: 0.8px;
+    }
+
+    .generate-btn:hover {
+      background: #ef6c00;
+      transform: scale(1.02);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .generate-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* loading / error styles */
+    .loading-state, .error-state {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: #fef3e2;
+      border-radius: 1.8rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      border: 5px solid #ffd58c;
+      border-top: 5px solid #f57c00;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-state {
+      color: #c4450c;
+      font-weight: 600;
+      border-left: 5px solid #e65100;
+    }
+
+    .retry-link {
+      background: none;
+      border: none;
+      color: #e65100;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 12px;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    /* footer */
+    .footer-note {
+      text-align: center;
+      font-size: 0.7rem;
+      padding: 1rem 1.2rem 1.2rem;
+      color: #a47c56;
+      background: #fff9f0;
+      border-top: 1px solid #f7e5d3;
+    }
+
+    .footer-note a {
+      color: #d45a1f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* responsif */
+    @media (max-width: 550px) {
+      .joke-content {
+        padding: 1.4rem;
+      }
+      .joke-text {
+        font-size: 1.25rem;
+      }
+      .generate-btn {
+        padding: 0.7rem 1.6rem;
+        font-size: 0.95rem;
+      }
+      .joke-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="joke-card" id="jokeCard">
+  <div class="joke-header">
+    <h1>
+      <span>ðŸ‡®ðŸ‡©</span> Lelucon Indonesia <span>ðŸ˜†</span>
+    </h1>
+    <div class="sub">âœ¨ auto-generate Â· candaan random âœ¨</div>
+  </div>
+
+  <div class="joke-content" id="jokeContent">
+    <!-- akan diisi oleh javascript -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>ðŸŽ‹ Lagi nyariin lelucon lucu buat kamu...</p>
+      <p style="font-size:0.75rem; margin-top:0.5rem;">âš¡ dari API Candaan Indonesia</p>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    ðŸ¤£ <strong>Auto generate joke</strong> - Klik tombol untuk lelucon baru &nbsp;|&nbsp;
+    ðŸ“¢ Sumber: <a href="https://candaan-api.vercel.app" target="_blank" rel="noopener">Candaan API (Indonesia)</a>
+  </div>
+</div>
+
+<script>
+  // ========================
+  // API LElucon BAHASA INDONESIA (Candaan API)
+  // Endpoint: https://candaan-api.vercel.app/api/text/random
+  // Mengembalikan JSON: { success: boolean, data: string (teks candaan) }
+  // ========================
+  const JOKE_API_URL = 'https://candaan-api.vercel.app/api/text/random';
+  
+  // Data lokal cadangan jika API gagal (beberapa joke Indonesia lucu)
+  const FALLBACK_JOKES = [
+    "Kenapa ayam jantan nggak bisa jadi pemain sepak bola? Karena kalau tendang bola malah ngerumput terus! ðŸ”âš½",
+    "Aku baru beli baju baru, katanya 'limited edition'. Ternyata setelah dipakai, bataku yang terbatas edisinya. ðŸ˜‚",
+    "Pak RT: 'Bapak-bapak yang punya istri lebih dari satu, maju ke depan!' Nggak ada yang maju. 'Wah hebat, rukun semua.' Eh tiba-tiba ada suara dari belakang: 'Pak RT, saya punya satu aja sudah cukup, itu pun kadang mau saya kembalikan.'",
+    "Kenapa ikan nggak mau sekolah? Soalnya kalo ikut ujian, yang keluar bukan nilai tapi sisik! ðŸŸ",
+    "Teman: 'Kamu kok hitam sekali sih?' Saya: 'Iya, aku orang Indonesia asli, bukan blackpink tapi hitam manis.' ðŸ˜„",
+    "Aku capek jadi programmer, setiap hari debug mulu. Kalo lagi galau, runtime error-nya di hati. ðŸ’»ðŸ’”",
+    "Orang Minang bilang: 'Rumah gadang itu luas, tapi hati kami lebih luas lagi untuk yang ngutang dan lupa bayar.'",
+    "Saya kemarin mimpi makan rendang. Bangun-bangun sendok masih di tangan, tapi rendangnya cuma mimpi! ðŸ˜¢"
+  ];
+
+  // ambil random dari cadangan
+  function getRandomFallbackJoke() {
+    const randomIndex = Math.floor(Math.random() * FALLBACK_JOKES.length);
+    return FALLBACK_JOKES[randomIndex];
+  }
+
+  // Elemen content
+  const jokeContentDiv = document.getElementById('jokeContent');
+
+  // Fungsi menampilkan loading
+  function showLoadingState() {
+    jokeContentDiv.innerHTML = `
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>ðŸŽ­ Lagi nyari bahan ketawa buat kamu...</p>
+        <p style="font-size:0.8rem; margin-top:8px;">ðŸ‡®ðŸ‡© candaan asli Indonesia</p>
+      </div>
+    `;
+  }
+
+  // Fungsi menampilkan error dengan tombol retry
+  function showErrorState(message) {
+    jokeContentDiv.innerHTML = `
+      <div class="error-state">
+        <div style="font-size:2.5rem;">ðŸ¤”ðŸŒ¶ï¸</div>
+        <p><strong>âš ï¸ ${message}</strong></p>
+        <p style="margin-top:6px;">Tapi tenang, saya punya stok candaan lokal!</p>
+        <button class="retry-link" id="retryFallbackBtn">ðŸŽ² Tampilkan Lelucon Cadangan</button>
+        <button class="retry-link" id="forceRetryApiBtn" style="margin-left:10px;">ðŸ”„ Coba API Lagi</button>
+      </div>
+    `;
+    const retryBtn = document.getElementById('retryFallbackBtn');
+    const retryApiBtn = document.getElementById('forceRetryApiBtn');
+    if (retryBtn) {
+      retryBtn.addEventListener('click', () => {
+        // tampilkan joke dari cadangan lokal
+        displayJokeText(getRandomFallbackJoke(), true);
+      });
+    }
+    if (retryApiBtn) {
+      retryApiBtn.addEventListener('click', () => {
+        fetchIndonesianJoke();
+      });
+    }
+  }
+
+  // Fungsi utama untuk menampilkan joke ke UI setelah berhasil fetch
+  function displayJokeText(jokeText, isFallback = false) {
+    const fallbackNote = isFallback ? '<span class="emoji-indo">ðŸ“–</span> Cadangan Lucu' : '<span class="emoji-indo">ðŸŒ¶ï¸</span> Candaan Asli API';
+    const html = `
+      <div class="joke-indo-area">
+        <div class="joke-label">ðŸ˜‚ Lelucon Bahasa Indonesia</div>
+        <div class="joke-text">${escapeHtml(jokeText)}</div>
+      </div>
+      <div class="joke-meta">
+        <div class="source-badge">
+          ${fallbackNote}
+        </div>
+        <div class="source-badge">
+          ðŸŽ‰ auto-generate
+        </div>
+      </div>
+      <div class="button-group">
+        <button class="generate-btn" id="newJokeBtn">
+          ðŸŽ²  Lelucon Baru (Auto)  ðŸ”„
+        </button>
+      </div>
+    `;
+    jokeContentDiv.innerHTML = html;
+    // Event listener tombol generate
+    const newBtn = document.getElementById('newJokeBtn');
+    if (newBtn) {
+      // clone untuk refresh listener
+      const freshBtn = newBtn.cloneNode(true);
+      newBtn.parentNode.replaceChild(freshBtn, newBtn);
+      freshBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchIndonesianJoke();
+      });
+    }
+  }
+
+  // Escape HTML untuk keamanan
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // Fetch lelucon dari API candaan indonesia
+  async function fetchIndonesianJoke() {
+    showLoadingState();
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 1000);
+      const response = await fetch(JOKE_API_URL, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`Gagal memuat (status ${response.status})`);
+      }
+
+      const result = await response.json();
+      // API mengembalikan object dengan properti success & data
+      if (result && result.success === true && result.data && typeof result.data === 'string') {
+        const jokeIndonesia = result.data.trim();
+        if (jokeIndonesia.length > 0) {
+          displayJokeText(jokeIndonesia, false);
+        } else {
+          throw new Error('Data lelucon kosong');
+        }
+      } else {
+        // cek kemungkinan struktur lain (misal langsung {data: "..."})
+        if (result && result.data && typeof result.data === 'string') {
+          displayJokeText(result.data, false);
+        } else {
+          throw new Error('Format API tidak sesuai');
+        }
+      }
+    } catch (err) {
+      console.warn('API Candaan error:', err);
+      let userMsg = 'Gagal mengambil lelucon dari server.';
+      if (err.name === 'AbortError') userMsg = 'â±ï¸ Koneksi lambat, coba lagi ya.';
+      else if (err.message.includes('fetch')) userMsg = 'ðŸ“¡ Periksa koneksi internet.';
+      else userMsg = `âš ï¸ ${err.message}`;
+      
+      // saat error, tawarkan pilihan: pakai cadangan lokal atau coba API lagi
+      showErrorState(`${userMsg}. Ingin pakai lelucon lokal?`);
+    }
+  }
+
+  // event load halaman: langsung fetch joke indonesia
+  window.addEventListener('DOMContentLoaded', () => {
+    fetchIndonesianJoke();
+
+    // tambahan interaksi: tekan spasi atau tombol 'j' untuk generate baru (seperti easter egg)
+    document.body.addEventListener('keydown', (e) => {
+      if ((e.code === 'Space' || e.code === 'KeyJ') && !e.target.matches('input, textarea, button')) {
+        e.preventDefault();
+        fetchIndonesianJoke();
+      }
+    });
+  });
+</script>
+</body>
+</html>
+```
